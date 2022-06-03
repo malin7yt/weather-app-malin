@@ -1,0 +1,102 @@
+body {
+  border: 1px;
+}
+
+.container {
+  color: gray;
+}
+
+#search-text-input {
+  border-radius: 10px;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+
+h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+button {
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+#button-addon2 {
+  border-radius: 10px;
+  color: white;
+  background: blueviolet;
+  border: blueviolet;
+}
+
+#button-addon2:hover {
+  background: rgba(137, 43, 226, 0.548);
+}
+
+#current-location {
+  background: #ffffff;
+  color: blueviolet;
+  border-color: blueviolet;
+  border: solid;
+  border-width: 1px;
+}
+
+#current-location:hover {
+  background: rgba(137, 43, 226, 0.253);
+  border-color: rgba(137, 43, 226, 0.253);
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+form {
+  margin: 35px 35px 10px 35px;
+}
+
+.col-6 {
+  font-size: 35px;
+}
+
+.rain {
+  size: 20px;
+}
+
+#temp {
+  color: blueviolet;
+}
+
+#celsius-link {
+  color: grey;
+  text-decoration: none;
+}
+
+#celsius-link:hover {
+  color: blueviolet;
+}
+
+#fahrenheit-link {
+  color: grey;
+  text-decoration: none;
+}
+
+#fahrenheit-link:hover {
+  color: blueviolet;
+}
+
+.col-2 {
+  text-align: center;
+}
+
+.row {
+  margin: 0px;
+  padding: 10px 20px;
+}
+
+.card {
+  margin-top: 25px;
+}
