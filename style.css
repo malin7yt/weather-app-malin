@@ -1,6 +1,6 @@
 body {
   border: 1px;
-  background-color: #ffffff
+  background-color: #f7f3ff
 }
 
 .container {
@@ -34,7 +34,7 @@ button {
 }
 
 #button-addon2:hover {
-  background: rgba(137, 43, 226, 0.548);
+  background: #f7f3ff
 }
 
 #current-location {
