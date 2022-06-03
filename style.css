@@ -1,6 +1,6 @@
 body {
   border: 1px;
-  background-color: #f7f3ff
+  background-color: #d9ecf2
 }
 
 .container {
@@ -26,29 +26,30 @@ button {
   border-radius: 10px;
 }
 
+
 #button-addon2 {
   border-radius: 10px;
   color: white;
-  background: blueviolet;
-  border: blueviolet;
+  background: #1aa6B7;
+  border: #1aa6B7;
 }
 
 #button-addon2:hover {
-  background: #f7f3ff;
-  color: rgba(137, 43, 226, 0.478);
+  background: #002d40;
+  color: white;
 }
 
 #current-location {
   background: #ffffff;
-  color: blueviolet;
-  border-color: blueviolet;
+  color: #1aa6B7;
+  border-color: #1aa6B7;
   border: solid;
   border-width: 1px;
 }
 
 #current-location:hover {
-  background: rgba(137, 43, 226, 0.253);
-  border-color: rgba(137, 43, 226, 0.253);
+  background: #d9ecf2;
+  border-color: #d9ecf2;
 }
 
 p {
@@ -69,7 +70,7 @@ form {
 }
 
 #temp {
-  color: blueviolet;
+  color: #1aa6B7;
 }
 
 #celsius-link {
