@@ -7,6 +7,10 @@ body {
   color: gray;
 }
 
+.card {
+  border-radius: 10px;
+}
+
 #search-text-input {
   border-radius: 10px;
 }
