@@ -97,6 +97,7 @@ form {
 
 .col-2 {
   text-align: center;
+  margin-top: 20px;
 }
 
 .row {
@@ -106,4 +107,12 @@ form {
 
 .card {
   margin-top: 25px;
+}
+
+.forecast-temp-min {
+  color: rgba(128, 128, 128, 0.64);
+}
+
+.forecast-icon {
+  margin-bottom: 10px;
 }
