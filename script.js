@@ -24,7 +24,7 @@ let months = [
   "Sep",
   "Oct",
   "Nov",
-  "Dec"
+  "Dec",
 ];
 let month = months[now.getMonth()];
 
@@ -37,11 +37,14 @@ function displayWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
-  let descriptionElement = document.querySelector("#description")
+  let descriptionElement = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
 
-  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
- 
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}`;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -51,8 +54,7 @@ function displayWeather(response) {
   fahrenheitTemperature = response.data.main.temp;
 }
 
-function updateCity(event) {
-  let city = document.querySelector("#search-text-input").value;
+function updateCity(city) {
   let apiKey = "d04e13c2e5fb57ad9c255def5985a9d2";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeather);
@@ -64,9 +66,9 @@ function handleSubmit(event) {
   updateCity(city);
 }
 
-function searchLocation(city) {
+function searchLocation(position) {
   let apiKey = "d04e13c2e5fb57ad9c255def5985a9d2";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -77,22 +79,23 @@ function showLocation(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-let temperatureElement = document.querySelector("#temperature")
-temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature")
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 
+  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
+
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", showLocation);
 
-// let fahrenheitTemperature = null;
+let fahrenheitTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
@@ -103,4 +106,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-searchLocation("Cape Coral");
+updateCity("Cape Coral");
