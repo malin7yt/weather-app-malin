@@ -33,20 +33,22 @@ weekDayTime.innerHTML = `${day}, ${month} ${date} ${hours}:${minutes}`;
 // search
 
 function displayWeather(response) {
-  let h1 = document.querySelector("#searchCity");
-  h1.innerHTML = response.data.name;
-  let degrees = document.querySelector("#temperature");
-  degrees.innerHTML = `${Math.round(response.data.main.temp)}`;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#description").innerHTML =
-  response.data.weather[0].main;
-  console.log(response);
+  let cityElement = document.querySelector("#searchCity");
+  let temperatureElement = document.querySelector("#temperature");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let descriptionElement = document.querySelector("#description")
   let iconElement = document.querySelector("#icon");
 
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+ 
+  cityElement.innerHTML = response.data.name;
+  temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}`;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  descriptionElement.innerHTML = response.data.weather[0].main;
+
+  fahrenheitTemperature = response.data.main.temp;
 }
 
 function updateCity(event) {
@@ -62,9 +64,9 @@ function handleSubmit(event) {
   updateCity(city);
 }
 
-function searchLocation(position) {
+function searchLocation(city) {
   let apiKey = "d04e13c2e5fb57ad9c255def5985a9d2";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -73,8 +75,32 @@ function showLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+let temperatureElement = document.querySelector("#temperature")
+temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature")
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+}
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", showLocation);
+
+// let fahrenheitTemperature = null;
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+searchLocation("Cape Coral");

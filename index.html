@@ -24,7 +24,8 @@
               <input type="search" 
               class="form-control" 
               placeholder="Search City" 
-              id="search-text-input">
+              id="search-text-input"
+              autocomplete="off">
               <div class="input-group-append">
               </div>
               <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
@@ -36,12 +37,12 @@
     <div class="row">
       <div class="col-6">
         <h1 id="searchCity">Cape Coral</h1>
-        <h5><span id="weekDayTime"></span> </br>
+        <h5>Last updated: <span id="weekDayTime"></span> </br>
         <span id="description"></span></h5>
         </div>
       <div class="col-6">
         <h1>
-          <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" id="icon" class="float-left" /> 
+          <img src="" alt="" id="icon" class="float-left" /> 
         <span class="temperature" id="temperature"></span
           ><span class="units">
             <a href="#" id="fahrenheit-link">°F</a> <span id="temp">|</span>
@@ -56,10 +57,9 @@
   </br>
     <div class="row">
       <div class="col-2">
-        <p>
           <img src="rain.png" class="rain" width="45px" alt="sun png"> 
             </br>
-        Fri 5/13
+            <p class="forecast-days">Fri 5/13
         31°
             </p>
           </div>  
